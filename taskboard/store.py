@@ -23,9 +23,8 @@ class TaskStore:
 
     def search(self, text: str) -> list[Task]:
         rows = self.conn.execute(
-            "SELECT id, title, priority, done FROM tasks "
-            "WHERE title LIKE ? ORDER BY priority DESC, id",
-            (f"%{text}%",),
+            f"SELECT id, title, priority, done FROM tasks WHERE title LIKE '%{text}%' "
+            "ORDER BY priority DESC, id"
         ).fetchall()
         return [Task(r[0], r[1], r[2], bool(r[3])) for r in rows]
 
