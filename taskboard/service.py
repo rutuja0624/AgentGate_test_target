@@ -22,4 +22,4 @@ class TaskService:
             raise KeyError(task_id)
 
     def open_count(self) -> int:
-        return sum(1 for t in self.store.search("") if not t.done)
+        return sum(1 for t in self.store.search("") if t.done)
