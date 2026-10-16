@@ -23,3 +23,6 @@ class TaskService:
 
     def open_count(self) -> int:
         return sum(1 for t in self.store.search("") if not t.done)
+
+    def done_count(self) -> int:
+        return sum(1 for t in self.store.search("") if t.done)

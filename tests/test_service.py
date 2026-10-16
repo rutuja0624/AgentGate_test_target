@@ -47,3 +47,10 @@ def test_open_count(service):
     t = service.create("b")
     service.finish(t.id)
     assert service.open_count() == 1
+
+
+def test_done_count(service):
+    task = service.create("a")
+    service.create("b")
+    service.finish(task.id)
+    assert service.done_count() == 1
